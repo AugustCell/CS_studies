@@ -13,27 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Edward">
-      <UniqueIdentifier>{951712b2-87ec-4af6-b553-320fb72f3162}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Edward">
-      <UniqueIdentifier>{22378cd2-0361-4958-8579-b3a6e1469133}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Augusto">
-      <UniqueIdentifier>{0d5179e6-ffdb-4b48-84d8-e4663291f32a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Augusto">
-      <UniqueIdentifier>{7005495b-4ab8-4232-8c20-d1784920c30a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkedList.h">
-      <Filter>Header Files\Augusto</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
-      <Filter>Source Files\Augusto</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

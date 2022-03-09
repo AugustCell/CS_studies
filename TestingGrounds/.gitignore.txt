@@ -6,6 +6,6 @@
 **.ilk
 **.pdb
 **.log
-**.tlog
+**.tlog       
 **lastbuildstate
 **.idp
