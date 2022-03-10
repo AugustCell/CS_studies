@@ -1,0 +1,15 @@
+Initializer list - A way of intializing all member vairables of a class or a struct upon entry.
+				   Similar to uniform intiailziation.
+
+Narrowing conversion - This will basicaly convert whatever is set on the RValue, and change the type to
+					   what is on the LValue side. 
+					   int x = 2.7 (x = 2)
+
+Uniform initialization - This prevent narrowing conversions, and will raise compiler time errors to make 
+						 sure that you are setting your LValue correctly.
+
+Linked List - Linear data structure, where elements are not stored in contiguous memory locations. 
+			  Elements are connected together by pointers. Helps store data items. 
+			  Can be made into a doubly linked list or a singly linked list.
+			  Advantage that Doubly LL have over Single is that we can traverse the first and previous
+			  nodes as we please.

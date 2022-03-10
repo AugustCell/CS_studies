@@ -2,109 +2,103 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstdint>
+#include "Node.hpp"
 
 using namespace std;
 
-struct Node
-{
-    Node(uint32_t value) :
-        value(value),
-        next(nullptr),
-        prev(nullptr)
-    {
-    }
-    uint32_t value;
-    Node* next;
-    Node* prev;
-};
-
-class LinkedList
+class DoublyLinkedList
 {
 private:
-    Node* head;
-    Node* tail;
+    DoubleNode* head;
+    DoubleNode* tail;
     uint16_t size;
 
 public:
-    LinkedList()
+    DoublyLinkedList():
+        head(nullptr),
+        tail(nullptr),
+        size(0)
     {
-        head = nullptr;
-        tail = nullptr;
     }  
 
+    // O(1)
     void addToFront(uint32_t value)
     {
         if (head == nullptr && tail == nullptr)
         {
-            head = tail = new Node(value);
+            head = tail = new DoubleNode(value);
         }
         else if (head == tail)
         {
-            Node* newHead = new Node(value);
+            DoubleNode* newHead = new DoubleNode(value);
             newHead->next = head;
             head->prev = newHead;
             head = newHead;
         }
         else {
-            Node* prevHead = head;
-            head = new Node(value);
+            DoubleNode* prevHead = head;
+            head = new DoubleNode(value);
             head->next = prevHead;
             prevHead->prev = head;
         }
         size++;
     }
 
+    // O(1)
     void addToBack(uint32_t value)
     {
         if (head == nullptr && tail == nullptr)
         {
-            head = tail = new Node(value);
+            head = tail = new DoubleNode(value);
         }
         else if (head == tail)
         {
-            Node* newTail = new Node(value);
+            DoubleNode* newTail = new DoubleNode(value);
             newTail->prev = tail;
             tail->next = newTail;
             tail = newTail;
         }
         else {
-            Node* prevTail = tail;
-            tail = new Node(value);
+            DoubleNode* prevTail = tail;
+            tail = new DoubleNode(value);
             tail->prev = prevTail;
             prevTail->next = tail;
         }
         size++;
     }
 
+    // O(n)
     void addAfterNode(uint32_t value, uint16_t idx)
     {
         if (size == 0)
             return;
         else if (idx > size)
             return;
-        else if (idx == size)
+        else if (idx == (size - 1))
         {
-            Node* newNode = new Node(value);
+            DoubleNode* newNode = new DoubleNode(value);
             tail->next = newNode;
             newNode->prev = tail;
             tail = newNode;
         }
         else
         {
-            Node* ptr = head;
-            while (idx > 0) {
+            DoubleNode* ptr = head;
+            for (uint8_t i = 0; i < idx; i++)
+            {
                 ptr = ptr->next;
             }
-            Node* newNode = new Node(value);
+            DoubleNode* newNode = new DoubleNode(value);
 
             newNode->prev = ptr;
             newNode->next = ptr->next;
             ptr->next->prev = newNode;
-            ptr->next = newNode;
-            
+            ptr->next = newNode; 
         }
+        size++;
     }
 
+    // O(n)
     void addBeforeNode(uint32_t value, uint16_t idx)
     {
         if (size == 0)
@@ -113,27 +107,28 @@ public:
             return;
         else if (idx == 0)
         {
-            Node* newNode = new Node(value);
+            DoubleNode* newNode = new DoubleNode(value);
             head->prev = newNode;
             newNode->next = head;
             head = newNode;
         }
         else
         {
-            Node* ptr = head;
-            while (idx > 0) {
+            DoubleNode* ptr = head;
+            for(int i = 0; i < idx; i++) {
                 ptr = ptr->next;
             }
-            Node* newNode = new Node(value);
+            DoubleNode* newNode = new DoubleNode(value);
 
             newNode->next = ptr;
             newNode->prev = ptr->prev;
             ptr->prev->next = newNode;
             ptr->prev = newNode;
-
         }
+        size++;
     }
 
+    // O(n)
     void insert(uint32_t value) {
         if (head == nullptr && tail == nullptr) {
             addToFront(value);
@@ -143,10 +138,16 @@ public:
         }
     }
 
-    Node* getMiddle(void)
+    // O(n/2)
+    uint32_t getMiddle(void)
     {
-        Node* slow = head;
-        Node* fast = head;
+        if (head == nullptr)
+            return 0;
+        if (head == tail)
+            return head->value;
+
+        DoubleNode* slow = head;
+        DoubleNode* fast = head;
 
         if (head) {
             while (fast != nullptr && fast->next != nullptr)
@@ -155,20 +156,21 @@ public:
                 fast = fast->next->next;
             }
         }
-        return slow;
+        return slow->value;
     }
 
+    // O(n)
     void reverse(void)
     {
-        Node* temp = nullptr;
-        Node* curr = head;
-
         if (head == nullptr)
             return;
         if (head == tail)
             return;
 
-        Node* tempTail = tail;
+        DoubleNode* temp = nullptr;
+        DoubleNode* curr = head;
+
+        DoubleNode* tempTail = tail;
         tail = head;
         head = tempTail;
        
@@ -181,10 +183,11 @@ public:
         }
     }
 
+    // O(n)
     void printList(void)
     {
-        Node* ptr = head;
-        cout << "List of our values in the LL" << endl;
+        DoubleNode* ptr = head;
+        cout << "List of our values in the Double LL" << endl;
         while(ptr != nullptr)
         {
             cout << ptr->value;
@@ -195,5 +198,28 @@ public:
             ptr = ptr->next;
         }
         cout << endl;
+    }
+
+    // O(n)
+    void destroyList(void)
+    {
+        if(size == 0)
+            return;
+
+        DoubleNode* ptr = head;
+        while(ptr != nullptr)
+        {
+            DoubleNode* trailing = ptr;
+            ptr = ptr->next;
+            
+            trailing->value = 0;
+            trailing->next = nullptr;
+            trailing->prev = nullptr;
+            free(trailing);
+
+            size--;
+
+            cout << "This is size now: " << size << endl;
+        }
     }
 };
