@@ -24,7 +24,7 @@ int main() {
 	sLl.insert(1);
 	sLl.insert(2);
 	sLl.insert(3);
-	dLl.insert(4);
+	sLl.insert(4);
 
 	// Print normal insertion (S_LL)
 	sLl.printList();

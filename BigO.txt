@@ -1,0 +1,22 @@
+Big O cheat sheet for different data structures/searching algorithims/library structures
+
+Data Structures:
+					Single_LL	Double_LL	Stacks	Queues	Hash_Table	BST
+Indexing			  O(n)		   O(n)
+Search				  O(n)		   O(n)
+Insert				  O(1)		   O(1)
+Delete				  O(1)		   O(1)
+Space Complexity	  O(n)		   O(n)
+
+Tips and tricks:
+
+- Double_LL indexing can be cut down to O(1) if you use a hash tableto index the values to Node memory spaces.
+
+
+Std lib C++ Data Structures
+					vector  unordered_map   ordered_map  unordered_set	ordered_set  unordered_map  ordered_map
+Indexing			  
+Search				  
+Insert				  
+Delete				  
+Space Complexity	  

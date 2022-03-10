@@ -1,0 +1,8 @@
+General uses for DS and their definitions
+
+Linked List - Linear data structure, where elements are not stored in contiguous memory locations. 
+			  Elements are connected together by pointers. Helps store data items. 
+			  Can be made into a doubly linked list or a singly linked list.
+			  Advantage that Doubly LL have over Single is that we can traverse the first and previous
+			  nodes as we please.
+            
