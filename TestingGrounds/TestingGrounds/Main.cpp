@@ -20,11 +20,11 @@ int main() {
     SinglyLinkedList sLl;  //This is our implemented singly linked list
 	
     // Normal element insertion (S_LL)
-	sLl.insert(0);
 	sLl.insert(1);
 	sLl.insert(2);
 	sLl.insert(3);
 	sLl.insert(4);
+	sLl.insert(5);
 
 	// Print normal insertion (S_LL)
 	sLl.printList();
@@ -36,17 +36,23 @@ int main() {
     // Testing middle element (S_LL)
     cout << endl << "This is middle element: " << sLl.getMiddle() << endl;
 
-    // Testing deleting of element from the lists
+    // Testing deleting of element from the lists (S_LL)
     sLl.deleteNode(3);
     cout << "After deleting node with value 3" << endl;
     sLl.printList();
 
+	// Testing deleting front and back elements (S_LL)
+	sLl.removeFromFront();
+	sLl.removeFromBack();
+	cout << "After deleting nodes at front and back" << endl;
+	sLl.printList();
+
 	// Normal element insertion (D_LL)
-	dLl.insert(0);
 	dLl.insert(1);
 	dLl.insert(2);
 	dLl.insert(3);
 	dLl.insert(4);
+	dLl.insert(5);
 
 	// Print normal insertion (D_LL)
 	dLl.printList();
@@ -62,6 +68,12 @@ int main() {
     dLl.deleteNode(3);
     cout << "After deleting node with value 3" << endl;
     dLl.printList();
+
+	// Testing deleting front and back elements (S_LL)
+	dLl.removeFromFront();
+	dLl.removeFromBack();
+	cout << "After deleting nodes at front and back" << endl;
+	dLl.printList();
 
     // Free both lists for no memory leaks.
     dLl.destroyList();

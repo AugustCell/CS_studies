@@ -190,10 +190,10 @@ public:
         SingleNode* trailing = nullptr;
         if(curr->value == value)
         {
+            head = head->next;
             curr->value = 0;
             curr->next = nullptr;
             delete curr;
-            head = head->next;
         }
         else
         {
@@ -211,6 +211,57 @@ public:
         curr->value = 0;
         curr->next = nullptr;
         delete curr;
+    }
+
+    // O(1)
+    void removeFromFront(void)
+    {
+        if (size == 0)
+            return;
+        if (head == tail)
+        {
+            head->value = 0;
+            head->next = nullptr;
+            delete head;
+            delete tail;
+        }
+        else{
+            SingleNode* curr = head;
+
+            head = head->next;
+            curr->value = 0;
+            curr->next = nullptr;
+            delete curr;
+        }
+        size--;
+    }
+
+    // O(n)
+    void removeFromBack(void)
+    {
+        if (size == 0)
+            return;
+        if(head == tail)
+        {
+            tail->value = 0;
+            tail->next = nullptr;
+            delete tail;
+            delete head;
+        }
+        else
+        {
+            SingleNode* curr = head;
+            
+            while(curr->next->next != nullptr)
+                curr = curr->next;
+            
+            delete curr->next;
+            curr->next->value = 0;
+            curr->next = nullptr;
+            tail = curr;
+ 
+        }
+        size--;
     }
 
     // O(n)

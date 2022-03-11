@@ -194,10 +194,10 @@ public:
         DoubleNode* curr = head;
         if(curr->value == value)
         {
+            head = head->next;
             curr->value = 0;
             curr->next = nullptr;
-            free(curr);
-            head = head->next;
+            delete curr;
         }
         else
         {
@@ -212,7 +212,60 @@ public:
         curr->value = 0;
         curr->next = nullptr;
         curr->prev = nullptr;
-        free(curr);
+        delete curr;
+    }
+
+    // O(1)
+    void removeFromFront(void)
+    {
+        if (size == 0)
+            return;
+        if (head == tail)
+        {
+            head->value = 0;
+            head->next = nullptr;
+            head->prev = nullptr;
+            delete head;
+            delete tail;
+        }
+        else{
+            DoubleNode* curr = head;
+
+            head = head->next;
+            curr->value = 0;
+            curr->next = nullptr;
+            curr->prev = nullptr;
+            delete curr;
+        }
+        size--;
+    }
+
+    // O(n)
+    void removeFromBack(void)
+    {
+        if (size == 0)
+            return;
+        if(head == tail)
+        {
+            tail->value = 0;
+            tail->next = nullptr;
+            delete tail;
+            delete head;
+        }
+        else
+        {
+            DoubleNode* curr = head;
+
+            while (curr->next->next != nullptr)
+                curr = curr->next;
+        
+            delete curr->next;
+            curr->next->value = 0;
+            curr->next = nullptr;
+            curr->prev = nullptr;
+            tail = curr;
+        }
+        size--;
     }
 
     // O(n)
@@ -247,7 +300,7 @@ public:
             trailing->value = 0;
             trailing->next = nullptr;
             trailing->prev = nullptr;
-            free(trailing);
+            delete trailing;
 
             size--;
         }
