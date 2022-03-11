@@ -14,8 +14,9 @@
 #define NODE_H
 
 #include <stdbool.h>
-#include <stdint.h>
 #include <stdlib.h>
+#include <stdint.h>
+#include <stdio.h>
 
 #pragma pack ( push, 4 )
 typedef struct Node
@@ -41,6 +42,34 @@ bool nodeInit(Node** pNode, const uint32_t value)
     {
         (*pNode)->m_next = NULL;
         (*pNode)->m_value = value;
+
+        ret = true;
+    }
+
+    return ret;
+}
+
+bool nodeInitAndLink(Node** pNode, const uint32_t value, Node* n)
+{
+    bool ret = false;
+
+    if (*pNode != NULL)
+    {
+        fprintf(stderr, "pNode already initialized!\n\r");
+    }
+    else if ((*pNode = (Node*)malloc(sizeof(Node))) == NULL)
+    {
+        fprintf(stderr, "Memory allocation failed!\n\r");
+    }
+    else if (n == NULL)
+    {
+        fprintf(stderr, "Node n is null!\n\r");
+    }
+    else
+    {
+        (*pNode)->m_next = n;
+        (*pNode)->m_value = value;
+
         ret = true;
     }
 
@@ -63,6 +92,7 @@ bool freeNode(Node* n)
         }
 
         free(n);
+        n = NULL;
 
         ret = true;
     }
