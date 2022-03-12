@@ -2,23 +2,62 @@
 
 int main( void )
 {
-    static SinglyLinkedList sll;
+    SinglyLinkedList* sllA = NULL;
+    SinglyLinkedList* sllB = NULL;
 
-    sllInit((SinglyLinkedList**) & sll);
+    sllInit(&sllA);
+    sllInit(&sllB);
 
-    sllAddToFront(&sll, 4);
-    sllAddToFront(&sll, 3);
-    sllAddToFront(&sll, 2);
-    sllAddToFront(&sll, 1);
+    // Populate A
+    sllAddToFront(sllA, 8);
+    sllAddToFront(sllA, 6);
+    sllAddToFront(sllA, 4);
+    sllAddToFront(sllA, 2);
 
-    sllAddToBack(&sll, 5);
+    sllAddToBack(sllA, 10);
+    sllAddToBack(sllA, 12);
+    sllAddToBack(sllA, 14);
+    sllAddToBack(sllA, 16);
 
-    sllAddAtIndex(&sll, 6, 0);
-    sllAddAtIndex(&sll, 7, 5);
+    sllInsert(sllA, 15);
 
-    sllPrint(&sll);
+    sllPrint(sllA);
 
-    freeNode(sll.m_head);
+    /*sllPopFront(sllA);
+    sllPopBack(sllA);*/
+
+    sllPrint(sllA);
+
+    //sllReverse(sllA);
+
+    sllPrint(sllA);
+
+    // Populate B
+    sllAddToFront(sllB, 12);
+    sllAddToFront(sllB, 9);
+    sllAddToFront(sllB, 6);
+    sllAddToFront(sllB, 3);
+
+    sllAddToBack(sllB, 15);
+    sllAddToBack(sllB, 18);
+    sllAddToBack(sllB, 21);
+    sllAddToBack(sllB, 24);
+
+    sllInsert(sllB, 17);
+
+    sllPrint(sllB);
+
+    // Merge List
+    sllMerge(sllA, sllB);
+
+    sllPrint(sllA);
+
+    freeNode(sllA->m_head);
+    free(sllA);
+    sllA = NULL;
+
+    free(sllB);
+    sllB = NULL;
 
     return 0;
 }
