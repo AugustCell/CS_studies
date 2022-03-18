@@ -31,10 +31,10 @@
     <ClInclude Include="DoublyLinkedList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Node.hpp">
+    <ClInclude Include="SinglyLikedList.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SinglyLikedList.hpp">
+    <ClInclude Include="Nodes.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

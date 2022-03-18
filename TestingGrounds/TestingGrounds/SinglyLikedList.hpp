@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstdint>
-#include "Node.hpp"
+#include "Nodes.hpp"
 
 using namespace std;
 
@@ -19,6 +19,16 @@ public:
         tail(nullptr),
         size(0)
     {
+    }
+
+    void printHead()
+    {
+        cout << "This is head of S_LL: " << head->value << endl;
+    }
+
+    void printTail()
+    {
+        cout << "This is head of S_LL: " << tail->value << endl;
     }
 
     // O(1)
@@ -135,7 +145,7 @@ public:
     uint32_t getMiddle(void)
     {
         if (head == nullptr)
-            return -1;
+            return UINT_MAX;
         if (head == tail)
             return head->value;
 
@@ -190,10 +200,10 @@ public:
         SingleNode* trailing = nullptr;
         if(curr->value == value)
         {
+            head = head->next;
             curr->value = 0;
             curr->next = nullptr;
             delete curr;
-            head = head->next;
         }
         else
         {
@@ -211,6 +221,57 @@ public:
         curr->value = 0;
         curr->next = nullptr;
         delete curr;
+    }
+
+    // O(1)
+    void removeFromFront(void)
+    {
+        if (size == 0)
+            return;
+        if (head == tail)
+        {
+            head->value = 0;
+            head->next = nullptr;
+            delete head;
+            delete tail;
+        }
+        else{
+            SingleNode* curr = head;
+
+            head = head->next;
+            curr->value = 0;
+            curr->next = nullptr;
+            delete curr;
+        }
+        size--;
+    }
+
+    // O(n)
+    void removeFromBack(void)
+    {
+        if (size == 0)
+            return;
+        if(head == tail)
+        {
+            tail->value = 0;
+            tail->next = nullptr;
+            delete tail;
+            delete head;
+        }
+        else
+        {
+            SingleNode* curr = head;
+            
+            while(curr->next->next != nullptr)
+                curr = curr->next;
+            
+            delete curr->next;
+            curr->next->value = 0;
+            curr->next = nullptr;
+            tail = curr;
+ 
+        }
+        size--;
     }
 
     // O(n)
