@@ -192,7 +192,7 @@ public:
         {
             curr->value = 0;
             curr->next = nullptr;
-            free(curr);
+            delete curr;
             head = head->next;
         }
         else
@@ -210,7 +210,7 @@ public:
 
         curr->value = 0;
         curr->next = nullptr;
-        free(curr);
+        delete curr;
     }
 
     // O(n)
@@ -244,7 +244,7 @@ public:
 
             trailing->value = 0;
             trailing->next = nullptr;
-            free(trailing);
+            delete trailing;
 
             size--;
         }
