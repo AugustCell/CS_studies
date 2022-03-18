@@ -152,7 +152,7 @@ public:
     uint32_t getMiddle(void)
     {
         if (head == nullptr)
-            return -1;
+            return UINT_MAX;
         if (head == tail)
             return head->value;
 
