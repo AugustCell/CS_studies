@@ -6,20 +6,20 @@
 
 using namespace std;
 
-class SinglyLinkedList
+class DoublyLinkedList
 {
 private:
-    SingleNode* head;
-    SingleNode* tail;
+    DoubleNode* head;
+    DoubleNode* tail;
     uint16_t size;
 
 public:
-    SinglyLinkedList() :
+    DoublyLinkedList():
         head(nullptr),
         tail(nullptr),
         size(0)
     {
-    }
+    }  
 
     void printHead(void);
     void printTail(void);
