@@ -140,7 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="DoublyLinkedList.h" />
-    <ClInclude Include="Node.hpp" />
+    <ClInclude Include="Nodes.hpp" />
     <ClInclude Include="SinglyLikedList.hpp" />
   </ItemGroup>
   <ItemGroup>

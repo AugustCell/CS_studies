@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstdint>
-#include "Node.hpp"
+#include "Nodes.hpp"
 
 using namespace std;
 
@@ -19,6 +19,16 @@ public:
         tail(nullptr),
         size(0)
     {
+    }
+
+    void printHead()
+    {
+        cout << "This is head of S_LL: " << head->value << endl;
+    }
+
+    void printTail()
+    {
+        cout << "This is head of S_LL: " << tail->value << endl;
     }
 
     // O(1)

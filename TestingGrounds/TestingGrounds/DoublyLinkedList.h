@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstdint>
-#include "Node.hpp"
+#include "Nodes.hpp"
 
 using namespace std;
 
@@ -20,6 +20,16 @@ public:
         size(0)
     {
     }  
+
+    void printHead()
+    {
+        cout << "This is head of D_LL: " << head->value << endl;
+    }
+
+    void printTail()
+    {
+        cout << "This is head of D_LL: " << tail->value << endl;
+    }
 
     // O(1)
     void addToFront(uint32_t value)
@@ -142,7 +152,7 @@ public:
     uint32_t getMiddle(void)
     {
         if (head == nullptr)
-            return 0;
+            return -1;
         if (head == tail)
             return head->value;
 
