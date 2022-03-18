@@ -184,6 +184,38 @@ public:
     }
 
     // O(n)
+    void deleteNode(uint16_t value)
+    {
+        if (value < 0)
+            return;
+        if (size == 0)
+            return;
+
+        DoubleNode* curr = head;
+        if(curr->value == value)
+        {
+            curr->value = 0;
+            curr->next = nullptr;
+            free(curr);
+            head = head->next;
+        }
+        else
+        {
+            while(curr != nullptr && curr->value != value)
+                curr = curr->next;
+        }
+        if(curr == nullptr)
+            return;
+
+        curr->prev->next = curr->next;
+        curr->next->prev = curr->prev;
+        curr->value = 0;
+        curr->next = nullptr;
+        curr->prev = nullptr;
+        free(curr);
+    }
+
+    // O(n)
     void printList(void)
     {
         DoubleNode* ptr = head;
@@ -218,8 +250,6 @@ public:
             free(trailing);
 
             size--;
-
-            cout << "This is size now: " << size << endl;
         }
     }
 };

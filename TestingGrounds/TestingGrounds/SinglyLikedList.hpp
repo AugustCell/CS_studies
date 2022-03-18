@@ -179,6 +179,41 @@ public:
     }
 
     // O(n)
+    void deleteNode(uint16_t value)
+    {
+        if (value < 0)
+            return;
+        if (size == 0)
+            return;
+
+        SingleNode* curr = head;
+        SingleNode* trailing = nullptr;
+        if(curr->value == value)
+        {
+            curr->value = 0;
+            curr->next = nullptr;
+            delete curr;
+            head = head->next;
+        }
+        else
+        {
+            while(curr != nullptr && curr->value != value)
+            {
+                trailing = curr;
+                curr = curr->next;
+            }
+        }
+        if(curr == nullptr)
+            return;
+        
+        trailing->next = curr->next;
+
+        curr->value = 0;
+        curr->next = nullptr;
+        delete curr;
+    }
+
+    // O(n)
     void printList(void)
     {
         SingleNode* ptr = head;
@@ -209,11 +244,9 @@ public:
 
             trailing->value = 0;
             trailing->next = nullptr;
-            free(trailing);
+            delete trailing;
 
             size--;
-
-            cout << "This is size now: " << size << endl;
         }
     }
 };
