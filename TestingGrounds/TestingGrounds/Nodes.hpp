@@ -30,35 +30,35 @@ struct SingleNode
     SingleNode* next;
 };
 
-template <typename K, typename V>
+template <uint32_t K, uint32_t V>
 struct HashNode
 {
-    HashNode(const K &key, const V &value):
-        key(key),
-        value(value)
+    HashNode(const uint32_t &key, const uint32_t &value):
+        key(K),
+        value(V)
     {}
     ~HashNode()
     {
         key = NULL;
         value = NULL;
     }
-    K key;
-    V value;
+    uint32_t key;
+    uint32_t value;
 
-    K getKey( void )
+    uint32_t getKey( void )
     {
         return key;
     }
-    V getValue( void )
+    uint32_t getValue( void )
     {
         return value;
     }
-    void setKey( K key )
+    void setKey( uint32_t key )
     {
         this->key = key;
     }
-    void setValue( V value )
-    {
-        this.value = value;
+    void setValue( uint32_t value )
+    {   
+        this->value = value;
     }
 };

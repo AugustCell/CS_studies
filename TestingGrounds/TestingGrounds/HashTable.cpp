@@ -1,26 +1,22 @@
 #include "HashTable.hpp"
 
-template <typename K, typename V>
-HashTable<K, V>::HashTable()
+template <uint32_t K, uint32_t V>
+HashTable<K, V>::HashTable():
+    capacity{ 20 },
+    size{ 0 },
+    table(new HashNode<K, V>*[capacity])
 {
-    capacity { 20 };
-    size { 0 };
-    table = new HashNode<K, V>*[capacity]();
-
     for(int i = 0; i < capacity; i++)
-    {
         table[i] = nullptr;
-    }
-
 }
 
-template<typename K, typename V>
+template<uint32_t K, uint32_t V>
 HashTable<K, V>::~HashTable()
 {
     // We may not have reached full capacity by the time we delete
     // the Hash Table
     uint32_t cap = capacity > size? capacity : size;
-    for(int i = 0; i < cap; i++)
+    for(uint8_t i = 0; i < cap; i++)
     {
         delete table[i];
         table[i] = nullptr;   
@@ -28,19 +24,19 @@ HashTable<K, V>::~HashTable()
     delete table;
 }
 
-template<typename K, typename V>
-uint32_t HashTable<K, V>::hashFunction( V value )
+template<uint32_t K, uint32_t V>
+uint32_t HashTable<K, V>::hashFunction( void )
 {
-    return value % size;
+    return V % size;
 }
 
 // Double hashing is one of the best forms of probing, does not yield
 // clusters, and is effective for resolving collisions. We do this 
 // 
-template<typename K, typename V>
-uint32_t HashTable<K, V>::doubleHashFunction( V value )
+template<uint32_t K, uint32_t V>
+uint32_t HashTable<K, V>::doubleHashFunction( void )
 {
-    return calcPrime() - hashFunction(value);
+    return calcPrime() - hashFunction(V);
 }
 
 /*
@@ -50,7 +46,7 @@ uint32_t HashTable<K, V>::doubleHashFunction( V value )
 // in the for loop which are multipples of i, and less than i^2.
 //
 */
-template<typename K, typename V>
+template<uint32_t K, uint32_t V>
 uint32_t HashTable<K, V>::calcPrime( void )
 {
     bool prime[size+1] {false};
@@ -67,26 +63,26 @@ uint32_t HashTable<K, V>::calcPrime( void )
     return ret;
 }
 
-template<typename K, typename V>
-bool HashTable<K, V>::keyExists( K key )
+template<uint32_t K, uint32_t V>
+bool HashTable<K, V>::keyExists( void )
 {
 
 }
 
-template<typename K, typename V>
-V HashTable<K, V>::getValue( K key )
+template<uint32_t K, uint32_t V>
+uint32_t HashTable<K, V>::getValue(void)
 {
 
 }
 
-template<typename K, typename V>
-void HashTable<K, V>::putPair( K key, V value )
+template<uint32_t K, uint32_t V>
+void HashTable<K, V>::putPair( void )
 {
 
 }
 
-template<typename K, typename V>
-void HashTable<K, V>::remove( K key )
+template<uint32_t K, uint32_t V>
+void HashTable<K, V>::remove( void )
 {
 
 }

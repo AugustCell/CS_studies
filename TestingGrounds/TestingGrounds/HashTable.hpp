@@ -3,7 +3,7 @@
 #include <iostream>
 #include "Nodes.hpp"
 
-template <typename K, typename V>
+template <uint32_t K, uint32_t V>
 class HashTable
 {
 private:
@@ -14,11 +14,11 @@ private:
 public:
     HashTable();
     ~HashTable();
-	uint32_t hashFunction( V value );
-    uint32_t doubleHashFunction( V value );
+	uint32_t hashFunction( void );
+    uint32_t doubleHashFunction( void );
     uint32_t calcPrime( void );
-    bool keyExists( K key );
-    V getValue( K key );
-    void putPair( K key, V value );
-    void remove( K key );
+    bool keyExists( void );
+    uint32_t getValue( void );
+    void putPair( void );
+    void remove( void );
 };
