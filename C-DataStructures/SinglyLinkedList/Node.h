@@ -1,7 +1,7 @@
 /**
  * @file Node.h
  *
- * @brief Implements the Node Structure of one auxiliary pointer with helper functions.
+ * @brief Defines the Node Structure of one auxiliary pointer with helper functions.
  *
  * @ingroup C-DataStructure
  *
@@ -18,7 +18,14 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#ifdef __cplusplus
+    extern "C" {
+#endif
+
 #pragma pack ( push, 4 )
+/**
+ * @brief A node containing a value and a next pointer to a node. Struct is 4-byte aligned.
+ */
 typedef struct Node
 {
     uint32_t m_value;
@@ -26,78 +33,32 @@ typedef struct Node
 } Node;
 #pragma pack ( pop )
 
-bool nodeInit(Node** pNode, const uint32_t value)
-{
-    bool ret = false;
+/**
+ * @brief Initializes a node with a value.
+ * @param pNode - A pointer to a Node with a level of indirection.
+ * @param value - A read-only unsigned integer.
+ * @return true if successful, false if not
+ */
+bool nodeInit(Node** pNode, const uint32_t value);
 
-    if (*pNode != NULL)
-    {
-        // already initialized!
+/**
+ * @brief Initializes a node with a value and a next node.
+ * @param pNode - A pointer to a Node with a level of indirection.
+ * @param value - A read-only unsigned integer.
+ * @param n - A pointer to another node.
+ * @return true if successful, false if not
+ */
+bool nodeInitAndLink(Node** pNode, const uint32_t value, Node* n);
+
+/**
+ * @brief Recursively frees linked nodes.
+ * @param n - A Pointer a node.
+ * @return true if successful, false if not
+ */
+bool freeNode(Node* n);
+
+#ifdef __cplusplus
     }
-    else if ((*pNode = (Node*)malloc(sizeof(Node))) == NULL)
-    {
-        // failed to malloc!
-    }
-    else
-    {
-        (*pNode)->m_next = NULL;
-        (*pNode)->m_value = value;
-
-        ret = true;
-    }
-
-    return ret;
-}
-
-bool nodeInitAndLink(Node** pNode, const uint32_t value, Node* n)
-{
-    bool ret = false;
-
-    if (*pNode != NULL)
-    {
-        fprintf(stderr, "pNode already initialized!\n\r");
-    }
-    else if ((*pNode = (Node*)malloc(sizeof(Node))) == NULL)
-    {
-        fprintf(stderr, "Memory allocation failed!\n\r");
-    }
-    else if (n == NULL)
-    {
-        fprintf(stderr, "Node n is null!\n\r");
-    }
-    else
-    {
-        (*pNode)->m_next = n;
-        (*pNode)->m_value = value;
-
-        ret = true;
-    }
-
-    return ret;
-}
-
-bool freeNode(Node* n)
-{
-    bool ret = false;
-
-    if (n == NULL)
-    {
-        // node is null!
-    }
-    else
-    {
-        if (n->m_next != NULL)
-        {
-            freeNode(n->m_next);
-        }
-
-        free(n);
-        n = NULL;
-
-        ret = true;
-    }
-
-    return ret;
-}
+#endif
 
 #endif // NODE_H

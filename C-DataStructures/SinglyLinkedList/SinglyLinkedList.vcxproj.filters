@@ -23,7 +23,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.c">
+    <ClCompile Include="Node.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SinglyLinkedList.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
