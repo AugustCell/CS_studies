@@ -1,6 +1,7 @@
 #define _CRTDBG_MAP_ALLOC
 #include "DoublyLinkedList.hpp"
 #include "SinglyLikedList.hpp"
+#include "HashTable.hpp"
 #include <stdlib.h>
 #include <crtdbg.h>
 
