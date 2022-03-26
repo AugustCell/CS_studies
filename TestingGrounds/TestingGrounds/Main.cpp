@@ -17,6 +17,10 @@ void sininglyLlTests( void )
 {
 	SinglyLinkedList sLl; //This is our implemented singly linked list
 
+	cout << "==========================" << endl;
+	cout << "SINGLY LINKED LIST TESTS!" << endl;
+	cout << "==========================" << endl << endl;
+
 	// Normal element insertion (S_LL)
 	sLl.insert(1);
 	sLl.insert(2);
@@ -53,6 +57,10 @@ void doublyLlTests(void)
 {
 	DoublyLinkedList dLl;  //This is our implemented doubly linked list
 
+	cout << "==========================" << endl;
+	cout << "DOUBLY LINKED LIST TESTS!" << endl;
+	cout << "==========================" << endl << endl;
+
 	// Normal element insertion (D_LL)
 	dLl.insert(1);
 	dLl.insert(2);
@@ -86,11 +94,27 @@ void doublyLlTests(void)
 	
 }
 
+void hashTableTest(void)
+{
+	HashTable ht;
+
+	cout << "================="<< endl;
+	cout << "HASH TABLE TESTS!" << endl;
+	cout << "=================" << endl << endl;
+
+	ht.put(0, 10);
+	ht.put(2, 20);
+	ht.put(4, 30);
+	ht.put(7, 40);
+	ht.printTable();
+}
+
 int main() {
 	cout << "Hello friends!" << endl;
 
 	sininglyLlTests();
 	doublyLlTests();
+	hashTableTest();
 
 	// Dump memory to check for leaks.
 	_CrtDumpMemoryLeaks();

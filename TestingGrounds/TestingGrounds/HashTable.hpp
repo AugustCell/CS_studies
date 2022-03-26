@@ -3,22 +3,22 @@
 #include <iostream>
 #include "Nodes.hpp"
 
-template <uint32_t K, uint32_t V>
 class HashTable
 {
 private:
-    HashNode<K, V>** table;
+    HashNode** table;
     uint32_t size;
-    uint32_t capacity;
+    static constexpr uint32_t capacity = 10000;
 
 public:
     HashTable();
     ~HashTable();
-	uint32_t hashFunction( void );
-    uint32_t doubleHashFunction( void );
+	uint32_t hashFunction( uint32_t key );
+    uint32_t doubleHashFunction( uint32_t key );
     uint32_t calcPrime( void );
-    bool keyExists( void );
-    uint32_t getValue( void );
-    void putPair( void );
-    void remove( void );
+    bool keyExists( uint32_t key );
+    uint32_t getValue( uint32_t key );
+    void put( uint32_t key, uint32_t value );
+    void remove( uint32_t key );
+    void printTable( void );
 };

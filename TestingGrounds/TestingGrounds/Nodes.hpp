@@ -30,17 +30,16 @@ struct SingleNode
     SingleNode* next;
 };
 
-template <uint32_t K, uint32_t V>
 struct HashNode
 {
     HashNode(const uint32_t &key, const uint32_t &value):
-        key(K),
-        value(V)
+        key(key),
+        value(value)
     {}
     ~HashNode()
     {
-        key = NULL;
-        value = NULL;
+        key = UINT32_MAX;
+        value = UINT32_MAX;
     }
     uint32_t key;
     uint32_t value;
