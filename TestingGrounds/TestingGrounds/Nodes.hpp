@@ -37,10 +37,7 @@ struct HashNode
         value(value)
     {}
     ~HashNode()
-    {
-        key = UINT32_MAX;
-        value = UINT32_MAX;
-    }
+    {}
     uint32_t key;
     uint32_t value;
 

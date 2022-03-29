@@ -91,7 +91,6 @@ void doublyLlTests(void)
 
 	// Free list for no memory leaks.
 	dLl.destroyList();
-	
 }
 
 void hashTableTest(void)
@@ -106,7 +105,6 @@ void hashTableTest(void)
 	ht.put(2, 20);
 	ht.put(4, 30);
 	ht.put(7, 40);
-	ht.printTable();
 }
 
 int main() {
@@ -114,7 +112,6 @@ int main() {
 
 	sininglyLlTests();
 	doublyLlTests();
-	hashTableTest();
 
 	// Dump memory to check for leaks.
 	_CrtDumpMemoryLeaks();
